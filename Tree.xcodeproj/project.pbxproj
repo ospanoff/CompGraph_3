@@ -27,6 +27,10 @@
 		D5B757021A1904EB00A012A7 /* jajlands1_lf.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = D5B756FB1A1904D000A012A7 /* jajlands1_lf.jpg */; };
 		D5B757031A1904EB00A012A7 /* jajlands1_rt.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = D5B756FC1A1904D000A012A7 /* jajlands1_rt.jpg */; };
 		D5B757041A1904EB00A012A7 /* jajlands1_up.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = D5B756FD1A1904D000A012A7 /* jajlands1_up.jpg */; };
+		D5B757071A190D5E00A012A7 /* Tree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D5B757051A190D5E00A012A7 /* Tree.cpp */; };
+		D5B7570B1A190D9B00A012A7 /* Branch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D5B757091A190D9B00A012A7 /* Branch.cpp */; };
+		D5B7570E1A190DA500A012A7 /* Leaf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D5B7570C1A190DA500A012A7 /* Leaf.cpp */; };
+		D5B757111A191D5600A012A7 /* Camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D5B7570F1A191D5600A012A7 /* Camera.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -55,7 +59,7 @@
 		D5B756FE1A1904DA00A012A7 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
-			dstPath = data/skyboxes;
+			dstPath = data/skyboxes/jajlands1;
 			dstSubfolderSpec = 7;
 			files = (
 				D5B756FF1A1904EB00A012A7 /* jajlands1_bk.jpg in CopyFiles */,
@@ -64,6 +68,15 @@
 				D5B757021A1904EB00A012A7 /* jajlands1_lf.jpg in CopyFiles */,
 				D5B757031A1904EB00A012A7 /* jajlands1_rt.jpg in CopyFiles */,
 				D5B757041A1904EB00A012A7 /* jajlands1_up.jpg in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D5B757121A192BAD00A012A7 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = data/skyboxes/sky;
+			dstSubfolderSpec = 7;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,6 +110,14 @@
 		D5B756FB1A1904D000A012A7 /* jajlands1_lf.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = jajlands1_lf.jpg; sourceTree = "<group>"; };
 		D5B756FC1A1904D000A012A7 /* jajlands1_rt.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = jajlands1_rt.jpg; sourceTree = "<group>"; };
 		D5B756FD1A1904D000A012A7 /* jajlands1_up.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = jajlands1_up.jpg; sourceTree = "<group>"; };
+		D5B757051A190D5E00A012A7 /* Tree.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Tree.cpp; sourceTree = "<group>"; };
+		D5B757061A190D5E00A012A7 /* Tree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tree.h; sourceTree = "<group>"; };
+		D5B757091A190D9B00A012A7 /* Branch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Branch.cpp; sourceTree = "<group>"; };
+		D5B7570A1A190D9B00A012A7 /* Branch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Branch.h; sourceTree = "<group>"; };
+		D5B7570C1A190DA500A012A7 /* Leaf.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Leaf.cpp; sourceTree = "<group>"; };
+		D5B7570D1A190DA500A012A7 /* Leaf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Leaf.h; sourceTree = "<group>"; };
+		D5B7570F1A191D5600A012A7 /* Camera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Camera.cpp; sourceTree = "<group>"; };
+		D5B757101A191D5600A012A7 /* Camera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Camera.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,15 +180,20 @@
 		D5A6AF8F1A18ECB900A4618B /* include */ = {
 			isa = PBXGroup;
 			children = (
+				D5B7570F1A191D5600A012A7 /* Camera.cpp */,
+				D5B757101A191D5600A012A7 /* Camera.h */,
+				D5A6AF901A18ECB900A4618B /* ShaderLoader.cpp */,
+				D5A6AF911A18ECB900A4618B /* ShaderLoader.h */,
 				D5B756F31A19038E00A012A7 /* Skybox.cpp */,
 				D5B756F41A19038E00A012A7 /* Skybox.h */,
 				D5B756F21A19025B00A012A7 /* StaticGeometry.h */,
 				D5A6AF941A18F01E00A4618B /* TextureLoader.cpp */,
 				D5A6AF951A18F01E00A4618B /* TextureLoader.h */,
+				D5B757051A190D5E00A012A7 /* Tree.cpp */,
+				D5B757061A190D5E00A012A7 /* Tree.h */,
+				D5B757081A190D7800A012A7 /* treeStruct */,
 				D5A6AF961A18F01E00A4618B /* VertexBufferObject.cpp */,
 				D5A6AF971A18F01E00A4618B /* VertexBufferObject.h */,
-				D5A6AF901A18ECB900A4618B /* ShaderLoader.cpp */,
-				D5A6AF911A18ECB900A4618B /* ShaderLoader.h */,
 			);
 			path = include;
 			sourceTree = "<group>";
@@ -211,6 +237,17 @@
 			path = jajlands1;
 			sourceTree = "<group>";
 		};
+		D5B757081A190D7800A012A7 /* treeStruct */ = {
+			isa = PBXGroup;
+			children = (
+				D5B757091A190D9B00A012A7 /* Branch.cpp */,
+				D5B7570A1A190D9B00A012A7 /* Branch.h */,
+				D5B7570C1A190DA500A012A7 /* Leaf.cpp */,
+				D5B7570D1A190DA500A012A7 /* Leaf.h */,
+			);
+			path = treeStruct;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -223,6 +260,7 @@
 				D5A6AF9A1A18F6B000A4618B /* CopyFiles */,
 				D5A6AF9B1A18F6B900A4618B /* CopyFiles */,
 				D5B756FE1A1904DA00A012A7 /* CopyFiles */,
+				D5B757121A192BAD00A012A7 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -269,9 +307,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5B7570E1A190DA500A012A7 /* Leaf.cpp in Sources */,
 				D5A6AF921A18ECB900A4618B /* ShaderLoader.cpp in Sources */,
+				D5B757111A191D5600A012A7 /* Camera.cpp in Sources */,
+				D5B7570B1A190D9B00A012A7 /* Branch.cpp in Sources */,
 				D5A6AF991A18F01E00A4618B /* VertexBufferObject.cpp in Sources */,
 				D5A6AF8A1A18E7DD00A4618B /* OGLApp.cpp in Sources */,
+				D5B757071A190D5E00A012A7 /* Tree.cpp in Sources */,
 				D5A6AF981A18F01E00A4618B /* TextureLoader.cpp in Sources */,
 				D5A6AF7A1A18E70700A4618B /* main.cpp in Sources */,
 				D5B756F51A19038E00A012A7 /* Skybox.cpp in Sources */,

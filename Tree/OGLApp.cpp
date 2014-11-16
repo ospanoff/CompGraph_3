@@ -12,6 +12,9 @@
 CTexture OGLApp::tGold, OGLApp::tSnow;
 GLFWwindow *OGLApp::_mainWindow;
 float OGLApp::phi, OGLApp::theta, OGLApp::rad;
+GLint OGLApp::_width, OGLApp::_height;
+CFlyingCamera OGLApp::camera;
+int OGLApp::camType;
 
 float fRotationAngleCube = 0.0f, fRotationAnglePyramid = 0.0f;
 float fCubeRotationSpeed = 0.0f, fPyramidRotationSpeed = 0.0f;
@@ -46,6 +49,7 @@ OGLApp::OGLApp(GLint w, GLint h, bool isFullScreen, const char *appTitle)
     phi = 0.0f;
     theta = 0.0f;
     rad = 50.0f;
+    camType = 0;
 }
 
 OGLApp::~OGLApp()
@@ -66,6 +70,8 @@ bool OGLApp::init()
     
     initCallbacks();
     initScene();
+    
+    camera.setUp(glm::vec3(0,0,50), glm::vec3(0,0,0), glm::vec3(0,1,0), 1.0f, 0.1f, _mainWindow);
 
     return true;
 }
@@ -131,7 +137,8 @@ void OGLApp::initScene()
     tSnow.setFiltering(TEXTURE_FILTER_MAG_BILINEAR, TEXTURE_FILTER_MIN_BILINEAR_MIPMAP);
     glEnable(GL_TEXTURE_2D);
     
-    sbMainSkybox.loadSkybox("data/skyboxes/", "jajlands1_ft.jpg", "jajlands1_bk.jpg", "jajlands1_lf.jpg", "jajlands1_rt.jpg", "jajlands1_up.jpg", "jajlands1_dn.jpg");
+    sbMainSkybox.loadSkybox("data/skyboxes/jajlands1/", "jajlands1_ft.jpg", "jajlands1_bk.jpg", "jajlands1_lf.jpg", "jajlands1_rt.jpg", "jajlands1_up.jpg", "jajlands1_dn.jpg");
+
 }
 
 void OGLApp::run()
@@ -156,11 +163,22 @@ void OGLApp::renderScene()
     
     glUniformMatrix4fv(iProjectionLoc, 1, GL_FALSE, glm::value_ptr(proj));
     
-    glm::vec3 camPos = glm::vec3(rad * cosf(theta) * sinf(phi), rad * sinf(theta), rad * cosf(theta) * cosf(phi));
+    static glm::vec3 camPos;
+    static glm::mat4 mModelView;
     
-    glm::mat4 mModelView = glm::lookAt(camPos, glm::vec3(0, 0, 0), glm::vec3(0.0f, 1.0f, 0.0f));
-    glm::mat4 mCurrent;
+    if (camType) {
+        mModelView = camera.look();
+        camPos = camera.vEye;
+    } else {
+        camPos = glm::vec3(rad * cosf(theta) * sinf(phi), rad * sinf(theta), rad * cosf(theta) * cosf(phi));
+        mModelView = glm::lookAt(camPos, glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        camera.vView = glm::vec3(0.0f, 0.0f, 0.0f);
+        camera.vEye = camPos;
+    }
     
+    static glm::mat4 mCurrent;
+    
+//    camPos = glm::vec3(camPos.x, camPos.y, camPos.z);
     glUniformMatrix4fv(iModelViewLoc, 1, GL_FALSE, glm::value_ptr(glm::translate(mModelView, camPos)));
     sbMainSkybox.renderSkybox();
     
@@ -202,25 +220,29 @@ void OGLApp::renderScene()
     fRotationAngleCube += fCubeRotationSpeed;
     fRotationAnglePyramid += fPyramidRotationSpeed;
     
+    camera.update();
+    
     glfwSwapBuffers(_mainWindow);
     glfwPollEvents();
 }
 
 void OGLApp::keyHandler()
 {
-    if (glfwGetKey(_mainWindow, GLFW_KEY_W)) {
-        if (theta < M_PI/2 - 0.01f)
-            theta += 0.01f;
-    }
-    if (glfwGetKey(_mainWindow, GLFW_KEY_S)) {
-        if (theta > -0.01f)
-            theta -= 0.01f;
-    }
-    if (glfwGetKey(_mainWindow, GLFW_KEY_A)) {
-        phi -= 0.01f;
-    }
-    if (glfwGetKey(_mainWindow, GLFW_KEY_D)) {
-        phi += 0.01f;
+    if (!camType) {
+        if (glfwGetKey(_mainWindow, GLFW_KEY_W)) {
+            if (theta < M_PI/2 - 0.01f)
+                theta += 0.01f;
+        }
+        if (glfwGetKey(_mainWindow, GLFW_KEY_S)) {
+            if (theta > -0.01f)
+                theta -= 0.01f;
+        }
+        if (glfwGetKey(_mainWindow, GLFW_KEY_A)) {
+            phi -= 0.01f;
+        }
+        if (glfwGetKey(_mainWindow, GLFW_KEY_D)) {
+            phi += 0.01f;
+        }
     }
 }
 
@@ -258,11 +280,30 @@ void OGLApp::keyboardCB(GLFWwindow *window, int key, int scanCode, int action, i
                 displayTextureFiltersInfo();
                 break;
             }
+        case GLFW_KEY_E:
+            if (action == GLFW_PRESS)
+                camType = (camType + 1) % 2;
+            break;
+        case GLFW_KEY_F:
+            rad += 1.0f;
+            break;
+        case GLFW_KEY_R:
+            if (rad > 1.0f)
+                rad -= 1.0f;
+            break;
+        case GLFW_KEY_Z:
+            camera.fSpeed -= 0.1f;
+            break;
+        case GLFW_KEY_X:
+            camera.fSpeed += 0.1f;
+            break;
+
     }
 }
 
 void OGLApp::mouseCB(GLFWwindow *window, double xPos, double yPos)
 {
+    camera.rotateWithMouse(xPos, yPos);
 }
 
 void OGLApp::initCallbacks()

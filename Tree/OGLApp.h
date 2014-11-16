@@ -20,6 +20,7 @@
 #include "VertexBufferObject.h"
 #include "TextureLoader.h"
 #include "Skybox.h"
+#include "Camera.h"
 
 class OGLApp {
 public:
@@ -45,8 +46,8 @@ public:
 
 private:
     static GLFWwindow *_mainWindow;
-    GLint _width;
-    GLint _height;
+    static GLint _width;
+    static GLint _height;
     bool _isFS;
     const char *_appTitle;
     
@@ -55,6 +56,9 @@ private:
     CVertexBufferObject vboSceneObjects;
     GLuint uiVAO;
     static CTexture tGold, tSnow;
+    static CFlyingCamera camera;
+    
+    static int camType;
     
     static float phi, theta, rad;
 };
