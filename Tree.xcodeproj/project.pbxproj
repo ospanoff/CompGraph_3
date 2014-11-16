@@ -8,23 +8,95 @@
 
 /* Begin PBXBuildFile section */
 		D5A6AF7A1A18E70700A4618B /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D5A6AF791A18E70700A4618B /* main.cpp */; };
+		D5A6AF811A18E73D00A4618B /* libglfw3.3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D5A6AF801A18E73D00A4618B /* libglfw3.3.0.dylib */; };
+		D5A6AF831A18E79B00A4618B /* libGLEW.1.11.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D5A6AF821A18E79B00A4618B /* libGLEW.1.11.0.dylib */; };
+		D5A6AF851A18E7B600A4618B /* libfreeimage.3.16.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D5A6AF841A18E7B600A4618B /* libfreeimage.3.16.0.dylib */; };
+		D5A6AF871A18E7BC00A4618B /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5A6AF861A18E7BC00A4618B /* OpenGL.framework */; };
+		D5A6AF8A1A18E7DD00A4618B /* OGLApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D5A6AF881A18E7DD00A4618B /* OGLApp.cpp */; };
+		D5A6AF921A18ECB900A4618B /* ShaderLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D5A6AF901A18ECB900A4618B /* ShaderLoader.cpp */; };
+		D5A6AF981A18F01E00A4618B /* TextureLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D5A6AF941A18F01E00A4618B /* TextureLoader.cpp */; };
+		D5A6AF991A18F01E00A4618B /* VertexBufferObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D5A6AF961A18F01E00A4618B /* VertexBufferObject.cpp */; };
+		D5A6AFA21A18F6DD00A4618B /* shader.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = D5A6AF9D1A18F6D800A4618B /* shader.frag */; };
+		D5A6AFA31A18F6DD00A4618B /* shader.vert in CopyFiles */ = {isa = PBXBuildFile; fileRef = D5A6AF9E1A18F6D800A4618B /* shader.vert */; };
+		D5A6AFA41A18F6E100A4618B /* golddiag.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = D5A6AFA01A18F6D800A4618B /* golddiag.jpg */; };
+		D5A6AFA51A18F6E100A4618B /* snow.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = D5A6AFA11A18F6D800A4618B /* snow.jpg */; };
+		D5B756F51A19038E00A012A7 /* Skybox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D5B756F31A19038E00A012A7 /* Skybox.cpp */; };
+		D5B756FF1A1904EB00A012A7 /* jajlands1_bk.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = D5B756F81A1904D000A012A7 /* jajlands1_bk.jpg */; };
+		D5B757001A1904EB00A012A7 /* jajlands1_dn.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = D5B756F91A1904D000A012A7 /* jajlands1_dn.jpg */; };
+		D5B757011A1904EB00A012A7 /* jajlands1_ft.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = D5B756FA1A1904D000A012A7 /* jajlands1_ft.jpg */; };
+		D5B757021A1904EB00A012A7 /* jajlands1_lf.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = D5B756FB1A1904D000A012A7 /* jajlands1_lf.jpg */; };
+		D5B757031A1904EB00A012A7 /* jajlands1_rt.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = D5B756FC1A1904D000A012A7 /* jajlands1_rt.jpg */; };
+		D5B757041A1904EB00A012A7 /* jajlands1_up.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = D5B756FD1A1904D000A012A7 /* jajlands1_up.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		D5A6AF741A18E70700A4618B /* CopyFiles */ = {
+		D5A6AF9A1A18F6B000A4618B /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
+			dstPath = data/shaders;
+			dstSubfolderSpec = 7;
 			files = (
+				D5A6AFA21A18F6DD00A4618B /* shader.frag in CopyFiles */,
+				D5A6AFA31A18F6DD00A4618B /* shader.vert in CopyFiles */,
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D5A6AF9B1A18F6B900A4618B /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = data/textures;
+			dstSubfolderSpec = 7;
+			files = (
+				D5A6AFA41A18F6E100A4618B /* golddiag.jpg in CopyFiles */,
+				D5A6AFA51A18F6E100A4618B /* snow.jpg in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D5B756FE1A1904DA00A012A7 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = data/skyboxes;
+			dstSubfolderSpec = 7;
+			files = (
+				D5B756FF1A1904EB00A012A7 /* jajlands1_bk.jpg in CopyFiles */,
+				D5B757001A1904EB00A012A7 /* jajlands1_dn.jpg in CopyFiles */,
+				D5B757011A1904EB00A012A7 /* jajlands1_ft.jpg in CopyFiles */,
+				D5B757021A1904EB00A012A7 /* jajlands1_lf.jpg in CopyFiles */,
+				D5B757031A1904EB00A012A7 /* jajlands1_rt.jpg in CopyFiles */,
+				D5B757041A1904EB00A012A7 /* jajlands1_up.jpg in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		D5A6AF761A18E70700A4618B /* Tree */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Tree; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5A6AF791A18E70700A4618B /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		D5A6AF801A18E73D00A4618B /* libglfw3.3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw3.3.0.dylib; path = ../../../../../../usr/local/Cellar/glfw3/3.0.4/lib/libglfw3.3.0.dylib; sourceTree = "<group>"; };
+		D5A6AF821A18E79B00A4618B /* libGLEW.1.11.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libGLEW.1.11.0.dylib; path = ../../../../../../usr/local/Cellar/glew/1.11.0/lib/libGLEW.1.11.0.dylib; sourceTree = "<group>"; };
+		D5A6AF841A18E7B600A4618B /* libfreeimage.3.16.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfreeimage.3.16.0.dylib; path = ../../../../../../usr/local/Cellar/freeimage/3.16.0/lib/libfreeimage.3.16.0.dylib; sourceTree = "<group>"; };
+		D5A6AF861A18E7BC00A4618B /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		D5A6AF881A18E7DD00A4618B /* OGLApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OGLApp.cpp; sourceTree = "<group>"; };
+		D5A6AF891A18E7DD00A4618B /* OGLApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGLApp.h; sourceTree = "<group>"; };
+		D5A6AF901A18ECB900A4618B /* ShaderLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShaderLoader.cpp; sourceTree = "<group>"; };
+		D5A6AF911A18ECB900A4618B /* ShaderLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShaderLoader.h; sourceTree = "<group>"; };
+		D5A6AF941A18F01E00A4618B /* TextureLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TextureLoader.cpp; sourceTree = "<group>"; };
+		D5A6AF951A18F01E00A4618B /* TextureLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextureLoader.h; sourceTree = "<group>"; };
+		D5A6AF961A18F01E00A4618B /* VertexBufferObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VertexBufferObject.cpp; sourceTree = "<group>"; };
+		D5A6AF971A18F01E00A4618B /* VertexBufferObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VertexBufferObject.h; sourceTree = "<group>"; };
+		D5A6AF9D1A18F6D800A4618B /* shader.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader.frag; sourceTree = "<group>"; };
+		D5A6AF9E1A18F6D800A4618B /* shader.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader.vert; sourceTree = "<group>"; };
+		D5A6AFA01A18F6D800A4618B /* golddiag.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = golddiag.jpg; sourceTree = "<group>"; };
+		D5A6AFA11A18F6D800A4618B /* snow.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = snow.jpg; sourceTree = "<group>"; };
+		D5B756F21A19025B00A012A7 /* StaticGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaticGeometry.h; sourceTree = "<group>"; };
+		D5B756F31A19038E00A012A7 /* Skybox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Skybox.cpp; sourceTree = "<group>"; };
+		D5B756F41A19038E00A012A7 /* Skybox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Skybox.h; sourceTree = "<group>"; };
+		D5B756F81A1904D000A012A7 /* jajlands1_bk.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = jajlands1_bk.jpg; sourceTree = "<group>"; };
+		D5B756F91A1904D000A012A7 /* jajlands1_dn.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = jajlands1_dn.jpg; sourceTree = "<group>"; };
+		D5B756FA1A1904D000A012A7 /* jajlands1_ft.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = jajlands1_ft.jpg; sourceTree = "<group>"; };
+		D5B756FB1A1904D000A012A7 /* jajlands1_lf.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = jajlands1_lf.jpg; sourceTree = "<group>"; };
+		D5B756FC1A1904D000A012A7 /* jajlands1_rt.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = jajlands1_rt.jpg; sourceTree = "<group>"; };
+		D5B756FD1A1904D000A012A7 /* jajlands1_up.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = jajlands1_up.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +104,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5A6AF871A18E7BC00A4618B /* OpenGL.framework in Frameworks */,
+				D5A6AF851A18E7B600A4618B /* libfreeimage.3.16.0.dylib in Frameworks */,
+				D5A6AF831A18E79B00A4618B /* libGLEW.1.11.0.dylib in Frameworks */,
+				D5A6AF811A18E73D00A4618B /* libglfw3.3.0.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -41,6 +117,10 @@
 		D5A6AF6D1A18E70700A4618B = {
 			isa = PBXGroup;
 			children = (
+				D5A6AF861A18E7BC00A4618B /* OpenGL.framework */,
+				D5A6AF841A18E7B600A4618B /* libfreeimage.3.16.0.dylib */,
+				D5A6AF821A18E79B00A4618B /* libGLEW.1.11.0.dylib */,
+				D5A6AF801A18E73D00A4618B /* libglfw3.3.0.dylib */,
 				D5A6AF781A18E70700A4618B /* Tree */,
 				D5A6AF771A18E70700A4618B /* Products */,
 			);
@@ -57,9 +137,78 @@
 		D5A6AF781A18E70700A4618B /* Tree */ = {
 			isa = PBXGroup;
 			children = (
+				D5A6AF8E1A18ECB900A4618B /* data */,
+				D5A6AF8F1A18ECB900A4618B /* include */,
 				D5A6AF791A18E70700A4618B /* main.cpp */,
+				D5A6AF881A18E7DD00A4618B /* OGLApp.cpp */,
+				D5A6AF891A18E7DD00A4618B /* OGLApp.h */,
 			);
 			path = Tree;
+			sourceTree = "<group>";
+		};
+		D5A6AF8E1A18ECB900A4618B /* data */ = {
+			isa = PBXGroup;
+			children = (
+				D5B756F61A1904D000A012A7 /* skyboxes */,
+				D5A6AF9C1A18F6D800A4618B /* shaders */,
+				D5A6AF9F1A18F6D800A4618B /* textures */,
+			);
+			path = data;
+			sourceTree = "<group>";
+		};
+		D5A6AF8F1A18ECB900A4618B /* include */ = {
+			isa = PBXGroup;
+			children = (
+				D5B756F31A19038E00A012A7 /* Skybox.cpp */,
+				D5B756F41A19038E00A012A7 /* Skybox.h */,
+				D5B756F21A19025B00A012A7 /* StaticGeometry.h */,
+				D5A6AF941A18F01E00A4618B /* TextureLoader.cpp */,
+				D5A6AF951A18F01E00A4618B /* TextureLoader.h */,
+				D5A6AF961A18F01E00A4618B /* VertexBufferObject.cpp */,
+				D5A6AF971A18F01E00A4618B /* VertexBufferObject.h */,
+				D5A6AF901A18ECB900A4618B /* ShaderLoader.cpp */,
+				D5A6AF911A18ECB900A4618B /* ShaderLoader.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		D5A6AF9C1A18F6D800A4618B /* shaders */ = {
+			isa = PBXGroup;
+			children = (
+				D5A6AF9E1A18F6D800A4618B /* shader.vert */,
+				D5A6AF9D1A18F6D800A4618B /* shader.frag */,
+			);
+			path = shaders;
+			sourceTree = "<group>";
+		};
+		D5A6AF9F1A18F6D800A4618B /* textures */ = {
+			isa = PBXGroup;
+			children = (
+				D5A6AFA01A18F6D800A4618B /* golddiag.jpg */,
+				D5A6AFA11A18F6D800A4618B /* snow.jpg */,
+			);
+			path = textures;
+			sourceTree = "<group>";
+		};
+		D5B756F61A1904D000A012A7 /* skyboxes */ = {
+			isa = PBXGroup;
+			children = (
+				D5B756F71A1904D000A012A7 /* jajlands1 */,
+			);
+			path = skyboxes;
+			sourceTree = "<group>";
+		};
+		D5B756F71A1904D000A012A7 /* jajlands1 */ = {
+			isa = PBXGroup;
+			children = (
+				D5B756F81A1904D000A012A7 /* jajlands1_bk.jpg */,
+				D5B756F91A1904D000A012A7 /* jajlands1_dn.jpg */,
+				D5B756FA1A1904D000A012A7 /* jajlands1_ft.jpg */,
+				D5B756FB1A1904D000A012A7 /* jajlands1_lf.jpg */,
+				D5B756FC1A1904D000A012A7 /* jajlands1_rt.jpg */,
+				D5B756FD1A1904D000A012A7 /* jajlands1_up.jpg */,
+			);
+			path = jajlands1;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,7 +220,9 @@
 			buildPhases = (
 				D5A6AF721A18E70700A4618B /* Sources */,
 				D5A6AF731A18E70700A4618B /* Frameworks */,
-				D5A6AF741A18E70700A4618B /* CopyFiles */,
+				D5A6AF9A1A18F6B000A4618B /* CopyFiles */,
+				D5A6AF9B1A18F6B900A4618B /* CopyFiles */,
+				D5B756FE1A1904DA00A012A7 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -118,7 +269,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5A6AF921A18ECB900A4618B /* ShaderLoader.cpp in Sources */,
+				D5A6AF991A18F01E00A4618B /* VertexBufferObject.cpp in Sources */,
+				D5A6AF8A1A18E7DD00A4618B /* OGLApp.cpp in Sources */,
+				D5A6AF981A18F01E00A4618B /* TextureLoader.cpp in Sources */,
 				D5A6AF7A1A18E70700A4618B /* main.cpp in Sources */,
+				D5B756F51A19038E00A012A7 /* Skybox.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -158,6 +314,14 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					/usr/local/Cellar/glfw3/3.0.4/include,
+					/usr/local/Cellar/glew/1.11.0/include,
+					/usr/local/Cellar/glm/0.9.5.4/include,
+					/usr/local/Cellar/freeimage/3.16.0/include,
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -193,6 +357,14 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					/usr/local/Cellar/glfw3/3.0.4/include,
+					/usr/local/Cellar/glew/1.11.0/include,
+					/usr/local/Cellar/glm/0.9.5.4/include,
+					/usr/local/Cellar/freeimage/3.16.0/include,
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
@@ -202,6 +374,12 @@
 		D5A6AF7E1A18E70700A4618B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/local/Cellar/glfw3/3.0.4/lib,
+					/usr/local/Cellar/glew/1.11.0/lib,
+					/usr/local/Cellar/freeimage/3.16.0/lib,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -209,6 +387,12 @@
 		D5A6AF7F1A18E70700A4618B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/local/Cellar/glfw3/3.0.4/lib,
+					/usr/local/Cellar/glew/1.11.0/lib,
+					/usr/local/Cellar/freeimage/3.16.0/lib,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -232,6 +416,7 @@
 				D5A6AF7F1A18E70700A4618B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
