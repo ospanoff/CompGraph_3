@@ -47,7 +47,7 @@ public:
     void genBranch();
     void genMainBranch(glm::mat4 mModelView);
     void render(GLint mvLoc, double time);
-    void drawLeaf(GLint mvLoc);
+    void drawLeaf(GLint mvLoc, bool alpha);
 
 private:
     Branch branch;

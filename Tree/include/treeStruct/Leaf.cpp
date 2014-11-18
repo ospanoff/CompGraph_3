@@ -82,18 +82,18 @@ void Leaf::renderLeaf()
 
 void Leaf::loadAlpha()
 {
-    texture.loadTexture2D("data/textures/leaf.png");
+    textureAlpha.loadTexture2D("data/textures/leaf.png");
     //    for (int i = 0; i < 6; i++)	{
-        texture.setFiltering(TEXTURE_FILTER_MAG_BILINEAR, TEXTURE_FILTER_MIN_BILINEAR);
-        texture.setSamplerParameter(GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-        texture.setSamplerParameter(GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+        textureAlpha.setFiltering(TEXTURE_FILTER_MAG_BILINEAR, TEXTURE_FILTER_MIN_BILINEAR);
+        textureAlpha.setSamplerParameter(GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+        textureAlpha.setSamplerParameter(GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
     //    }
     
-    glGenVertexArrays(1, &VAO);
-    glBindVertexArray(VAO);
+    glGenVertexArrays(1, &VAOAlpha);
+    glBindVertexArray(VAOAlpha);
     
-    vboRenderData.createVBO();
-    vboRenderData.bindVBO();
+    vboRenderDataAlpha.createVBO();
+    vboRenderDataAlpha.bindVBO();
     
     glm::vec3 leafVertices[6] = {
         glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(1.0f, 1.0f, 0.0f), glm::vec3(1.0f, 0.0f, 0.0f),
@@ -112,12 +112,12 @@ void Leaf::loadAlpha()
     };
     
     for (int i = 0; i < 6; i++) {
-        vboRenderData.addData(&leafVertices[i], sizeof(glm::vec3));
-        vboRenderData.addData(&leafTexCoords[i], sizeof(glm::vec2));
-        vboRenderData.addData(&vSkyBoxNormals[i%1], sizeof(glm::vec3));
+        vboRenderDataAlpha.addData(&leafVertices[i], sizeof(glm::vec3));
+        vboRenderDataAlpha.addData(&leafTexCoords[i], sizeof(glm::vec2));
+        vboRenderDataAlpha.addData(&vSkyBoxNormals[i%1], sizeof(glm::vec3));
     }
     
-    vboRenderData.uploadDataToGPU(GL_STATIC_DRAW);
+    vboRenderDataAlpha.uploadDataToGPU(GL_STATIC_DRAW);
     
     // Vertex positions
     glEnableVertexAttribArray(0);
@@ -138,8 +138,8 @@ void Leaf::renderLeafAlpha()
     glDisable(GL_DEPTH_TEST);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-    glBindVertexArray(VAO);
-    texture.bindTexture();
+    glBindVertexArray(VAOAlpha);
+    textureAlpha.bindTexture();
     glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
     for (int i = 0; i < 2; i++)	{
         glDrawArrays(GL_TRIANGLES, 3 * i, 3);

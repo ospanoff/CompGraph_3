@@ -22,8 +22,11 @@ public:
     void renderLeafAlpha();
 private:
     GLuint VAO;
+    GLuint VAOAlpha;
     CVertexBufferObject vboRenderData;
+    CVertexBufferObject vboRenderDataAlpha;
     CTexture texture;
+    CTexture textureAlpha;
 };
 
 #endif /* defined(__Tree__Leaf__) */

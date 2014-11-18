@@ -17,6 +17,7 @@ float OGLApp::phi, OGLApp::theta, OGLApp::rad;
 GLint OGLApp::_width, OGLApp::_height;
 CFlyingCamera OGLApp::camera;
 int OGLApp::camType;
+bool OGLApp::isAlpha;
 
 float fRotationAngleCube = 0.0f, fRotationAnglePyramid = 0.0f;
 float fCubeRotationSpeed = 0.0f, fPyramidRotationSpeed = 0.0f;
@@ -44,7 +45,7 @@ void displayTextureFiltersInfo()
 }
 
 OGLApp::OGLApp(GLint w, GLint h, bool isFullScreen, const char *appTitle)
-    :tree(5, 100, 70, 1000)
+    :tree(5, 100, 10, 1000)
 {
     _width = w;
     _height = h;
@@ -54,6 +55,7 @@ OGLApp::OGLApp(GLint w, GLint h, bool isFullScreen, const char *appTitle)
     theta = 0.5f;
     rad = 900.0f;
     camType = 0;
+    isAlpha = false;
 }
 
 OGLApp::~OGLApp()
@@ -232,7 +234,7 @@ void OGLApp::renderScene()
     glDrawArrays(GL_TRIANGLES, 48, 6);
     tree.genMainBranch(mModelView);
     tree.render(iModelViewLoc, curTime);
-    tree.drawLeaf(iModelViewLoc);
+    tree.drawLeaf(iModelViewLoc, isAlpha);
     tree.speedCoef = speedBranch;
 
     
@@ -243,6 +245,7 @@ void OGLApp::renderScene()
 
     camera.update();
     
+    std::cout << isAlpha << " ";
     glfwSwapBuffers(_mainWindow);
     glfwPollEvents();
 }
@@ -286,22 +289,16 @@ void OGLApp::keyboardCB(GLFWwindow *window, int key, int scanCode, int action, i
         case GLFW_KEY_LEFT:
             fPyramidRotationSpeed -= M_PI / 2;
             break;
-        // F1 and F2 change the texture filterings and set window text about that
         case GLFW_KEY_F1:
             if (action == GLFW_PRESS) {
-                tGold.setFiltering((tGold.getMagnificationFilter()+1)%2, tGold.getMinificationFilter());
-                tGround.setFiltering((tGround.getMagnificationFilter()+1)%2, tGround.getMinificationFilter());
-                displayTextureFiltersInfo();
-                break;
+                isAlpha = false;
             }
+            break;
         case GLFW_KEY_F2:
             if (action == GLFW_PRESS) {
-                int iNewMinFilter = tGround.getMinificationFilter() == TEXTURE_FILTER_MIN_TRILINEAR ? TEXTURE_FILTER_MIN_NEAREST : tGround.getMinificationFilter()+1;
-                tGround.setFiltering(tGround.getMagnificationFilter(), iNewMinFilter);
-                tGold.setFiltering(tGold.getMagnificationFilter(), iNewMinFilter);
-                displayTextureFiltersInfo();
-                break;
+                isAlpha = true;
             }
+            break;
         case GLFW_KEY_E:
             if (action == GLFW_PRESS)
                 camType = (camType + 1) % 2;

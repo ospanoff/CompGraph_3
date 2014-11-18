@@ -62,6 +62,8 @@ private:
     static CFlyingCamera camera;
     double curTime;
     
+    static bool isAlpha;
+    
     Tree tree;
 //    Leaf leaf;
     
