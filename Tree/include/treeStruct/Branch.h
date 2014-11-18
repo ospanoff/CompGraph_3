@@ -9,19 +9,20 @@
 #ifndef __Tree__Branch__
 #define __Tree__Branch__
 
-#include <GL/glew.h>
+#include <glm/glm.hpp>
+#include "VertexBufferObject.h"
+#include "TextureLoader.h"
+
 
 class Branch {
 public:
-    void renderSkybox();
-    
-    void releaseSkybox();
+    void load();
+    void renderBranch();
 private:
     GLuint VAO;
-//    CVertexBufferObject vboRenderData;
-//    CTexture tTextures[6];
-//    string sDirectory;
-//    string sFront, sBack, sLeft, sRight, sTop, sBottom;
+    CVertexBufferObject vboRenderData;
+    CTexture texture;
+    int numberOfDots;
 };
 
 #endif /* defined(__Tree__Branch__) */

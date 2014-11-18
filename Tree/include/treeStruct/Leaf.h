@@ -9,6 +9,21 @@
 #ifndef __Tree__Leaf__
 #define __Tree__Leaf__
 
-#include <stdio.h>
+#include <glm/glm.hpp>
+#include "VertexBufferObject.h"
+#include "TextureLoader.h"
+
+
+class Leaf {
+public:
+    void load();
+    void loadAlpha();
+    void renderLeaf();
+    void renderLeafAlpha();
+private:
+    GLuint VAO;
+    CVertexBufferObject vboRenderData;
+    CTexture texture;
+};
 
 #endif /* defined(__Tree__Leaf__) */

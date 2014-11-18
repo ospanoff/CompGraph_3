@@ -22,6 +22,9 @@
 #include "Skybox.h"
 #include "Camera.h"
 
+#include "Tree.h"
+#include "Leaf.h"
+
 class OGLApp {
 public:
     
@@ -55,8 +58,12 @@ private:
     CSkybox sbMainSkybox;
     CVertexBufferObject vboSceneObjects;
     GLuint uiVAO;
-    static CTexture tGold, tSnow;
+    static CTexture tGold, tGround;
     static CFlyingCamera camera;
+    double curTime;
+    
+    Tree tree;
+//    Leaf leaf;
     
     static int camType;
     

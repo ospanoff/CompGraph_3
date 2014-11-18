@@ -38,7 +38,7 @@ glm::vec2 vPyramidTexCoords[3] = {glm::vec2(0.5f, 1.0f), glm::vec2(0.0f, 0.0f), 
 
 glm::vec3 vGround[6] =
 {
-    glm::vec3(-1000, -10, -1000), glm::vec3(1000, -10, -1000), glm::vec3(1000, -10, 1000), glm::vec3(1000, -10, 1000), glm::vec3(-1000, -10, 1000), glm::vec3(-1000, -10, -1000)
+    glm::vec3(-1000, -5, -1000), glm::vec3(1000, -5, -1000), glm::vec3(1000, -5, 1000), glm::vec3(1000, -5, 1000), glm::vec3(-1000, -5, 1000), glm::vec3(-1000, -5, -1000)
 };
 
 #endif // STATICGEOMETRY

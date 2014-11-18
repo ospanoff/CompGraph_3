@@ -7,7 +7,7 @@ CFlyingCamera::CFlyingCamera()
     vEye = glm::vec3(0.0f, 0.0f, 0.0f);
     vView = glm::vec3(0.0f, 0.0, -1.0f);
     vUp = glm::vec3(0.0f, 1.0f, 0.0f);
-    fSpeed = 25.0f;
+    fSpeed = 50.0f;
     fSensitivity = 0.1f;
 }
 

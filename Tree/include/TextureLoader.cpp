@@ -47,8 +47,9 @@ bool CTexture::loadTexture2D(string a_sPath, bool bGenerateMipMaps)
 	iBPP = FreeImage_GetBPP(dib);
 
 	// If somehow one of these failed (they shouldn't), return failure
-	if(bDataPointer == NULL || iWidth == 0 || iHeight == 0)
+    if(bDataPointer == NULL || iWidth == 0 || iHeight == 0) {
 		return false;
+    }
 
 	// Generate an OpenGL texture ID for this texture
 	glGenTextures(1, &uiTexture);
@@ -57,7 +58,12 @@ bool CTexture::loadTexture2D(string a_sPath, bool bGenerateMipMaps)
 	int iFormat = iBPP == 24 ? GL_BGR : iBPP == 8 ? GL_LUMINANCE : 0;
 //	int iInternalFormat = iBPP == 24 ? GL_RGB : GL_DEPTH_COMPONENT; 
 
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, iWidth, iHeight, 0, iFormat, GL_UNSIGNED_BYTE, bDataPointer);
+    if (fif == FIF_PNG) {
+        FIBITMAP* tempImage = dib;
+        dib = FreeImage_ConvertTo32Bits(tempImage);
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, iWidth, iHeight, 0, GL_BGRA, GL_UNSIGNED_BYTE, bDataPointer);
+    } else
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, iWidth, iHeight, 0, iFormat, GL_UNSIGNED_BYTE, bDataPointer);
 
 	if(bGenerateMipMaps)glGenerateMipmap(GL_TEXTURE_2D);
 
@@ -65,7 +71,7 @@ bool CTexture::loadTexture2D(string a_sPath, bool bGenerateMipMaps)
 
 	glGenSamplers(1, &uiSampler);
 
-	sPath = a_sPath;
+    sPath = a_sPath;
 	bMipMapsGenerated = bGenerateMipMaps;
 
 	return true; // Success

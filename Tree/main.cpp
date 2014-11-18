@@ -20,6 +20,5 @@ int main(int argc, const char * argv[]) {
     
     app->run();
     
-    
     return 0;
 }
