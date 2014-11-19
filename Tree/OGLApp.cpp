@@ -17,9 +17,10 @@ CFlyingCamera OGLApp::camera;
 int OGLApp::camType;
 bool OGLApp::isAlpha;
 
-float fRotationAngleCube = 0.0f, fRotationAnglePyramid = 0.0f;
-float fCubeRotationSpeed = 0.0f, fPyramidRotationSpeed = 0.0f;
-float speedBranch = 1.0f, len = 0.0f;
+float speedBranch = 1.0f;
+float windStrength = 1.0f;
+float windSpeed = 0.0f;
+float treeAngle = 0.0f;
 
 void displayTextureFiltersInfo()
 {
@@ -188,7 +189,8 @@ void OGLApp::renderScene()
     glUniformMatrix4fv(iModelViewLoc, 1, GL_FALSE, glm::value_ptr(glm::translate(mModelView, camPos)));
     sbMainSkybox.renderSkybox();
 
-    tree.genMainBranch(mModelView);
+    mCurrent = glm::rotate(mModelView, windStrength * sin(treeAngle), glm::vec3(0.0f, 0.0f, 1.0f));
+    tree.genMainBranch(mCurrent);
     tree.render(iModelViewLoc, curTime);
     
     // Render ground
@@ -202,6 +204,8 @@ void OGLApp::renderScene()
     tree.drawLeaf(iModelViewLoc, isAlpha);
     tree.speedCoef = speedBranch;
 
+    treeAngle += windSpeed;
+    
     camera.update();
     
     glfwSwapBuffers(_mainWindow);
@@ -234,18 +238,6 @@ void OGLApp::keyboardCB(GLFWwindow *window, int key, int scanCode, int action, i
         case GLFW_KEY_Q:
         case GLFW_KEY_ESCAPE:
             glfwSetWindowShouldClose(window, GL_TRUE);
-            break;
-        case GLFW_KEY_UP:
-            fCubeRotationSpeed -= M_PI / 2;
-            break;
-        case GLFW_KEY_DOWN:
-            fCubeRotationSpeed += M_PI / 2;
-            break;
-        case GLFW_KEY_RIGHT:
-            fPyramidRotationSpeed += M_PI / 2;
-            break;
-        case GLFW_KEY_LEFT:
-            fPyramidRotationSpeed -= M_PI / 2;
             break;
         case GLFW_KEY_F1:
             if (action == GLFW_PRESS) {
@@ -282,7 +274,22 @@ void OGLApp::keyboardCB(GLFWwindow *window, int key, int scanCode, int action, i
         case GLFW_KEY_PERIOD:
             speedBranch += 1.0f;
             break;
-
+        case GLFW_KEY_C:
+            if (action == GLFW_PRESS)
+                windSpeed -= 0.03f;
+            break;
+        case GLFW_KEY_V:
+            if (action == GLFW_PRESS)
+                windSpeed += 0.03f;
+            break;
+        case GLFW_KEY_T:
+            if (action == GLFW_PRESS)
+                windStrength += 1.0f;
+            break;
+        case GLFW_KEY_G:
+            if (action == GLFW_PRESS)
+                windStrength -= 1.0f;
+            break;
     }
 }
 
