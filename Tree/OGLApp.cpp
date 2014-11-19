@@ -9,8 +9,6 @@
 #include "OGLApp.h"
 #include "StaticGeometry.h"
 
-//Leaf leaf;
-
 CTexture OGLApp::tGold, OGLApp::tGround;
 GLFWwindow *OGLApp::_mainWindow;
 float OGLApp::phi, OGLApp::theta, OGLApp::rad;
@@ -45,7 +43,7 @@ void displayTextureFiltersInfo()
 }
 
 OGLApp::OGLApp(GLint w, GLint h, bool isFullScreen, const char *appTitle)
-    :tree(5, 100, 10, 1000)
+    :tree(10, 100, 20, 1000)
 {
     _width = w;
     _height = h;
@@ -91,39 +89,29 @@ void OGLApp::initScene()
     glBindVertexArray(uiVAO);
     
     vboSceneObjects.bindVBO();
-    
-    // Add cube to VBO
-    
-    for (int i = 0; i < 36; i++) {
-        vboSceneObjects.addData(&vCubeVertices[i], sizeof(glm::vec3));
-        vboSceneObjects.addData(&vCubeTexCoords[i%6], sizeof(glm::vec2));
-    }
-    
-    // Add pyramid to VBO
-    
-    for (int i = 0; i < 12; i++) {
-        vboSceneObjects.addData(&vPyramidVertices[i], sizeof(glm::vec3));
-        vboSceneObjects.addData(&vPyramidTexCoords[i%3], sizeof(glm::vec2));
-    }
-    
+
     // Add ground to VBO
     
     for (int i = 0; i < 6; i++) {
         vboSceneObjects.addData(&vGround[i], sizeof(glm::vec3));
         vCubeTexCoords[i] *= 5.0f;
         vboSceneObjects.addData(&vCubeTexCoords[i%6], sizeof(glm::vec2));
+        glm::vec3 vGroundNormal(0.0f, 1.0f, 0.0f);
+        vboSceneObjects.addData(&vGroundNormal, sizeof(glm::vec3));
     }
     
     vboSceneObjects.uploadDataToGPU(GL_STATIC_DRAW);
     
-    // Vertex positions start on zero index, and distance between two consecutive is sizeof whole
-    // vertex data (position and tex. coord)
+    // Vertex positions
     glEnableVertexAttribArray(0);
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(glm::vec3)+sizeof(glm::vec2), 0);
-    // Texture coordinates start right after positon, thus on (sizeof(glm::vec3)) index,
-    // and distance between two consecutive is sizeof whole vertex data (position and tex. coord)
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 2*sizeof(glm::vec3)+sizeof(glm::vec2), 0);
+    // Texture coordinates
     glEnableVertexAttribArray(1);
-    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(glm::vec3)+sizeof(glm::vec2), (void*)sizeof(glm::vec3));
+    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 2*sizeof(glm::vec3)+sizeof(glm::vec2), (void*)sizeof(glm::vec3));
+    // Normal vectors
+    glEnableVertexAttribArray(2);
+    glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 2*sizeof(glm::vec3)+sizeof(glm::vec2), (void*)(sizeof(glm::vec3)+sizeof(glm::vec2)));
+
     
     // Load shaders and create shader program
     
@@ -156,7 +144,7 @@ void OGLApp::run()
     while (!glfwWindowShouldClose(_mainWindow)) {
         curTime = glfwGetTime();
         if (curTime - lastTime > 1) {
-//            std::cout << frame << std::endl;
+            std::cout << frame << " FPS" << std::endl;
             frame = 0;
             lastTime = curTime;
         }
@@ -197,55 +185,25 @@ void OGLApp::renderScene()
 
     static glm::mat4 mCurrent;
     
-//    camPos = glm::vec3(camPos.x, camPos.y + 5, camPos.z);
     glUniformMatrix4fv(iModelViewLoc, 1, GL_FALSE, glm::value_ptr(glm::translate(mModelView, camPos)));
     sbMainSkybox.renderSkybox();
 
+    tree.genMainBranch(mModelView);
+    tree.render(iModelViewLoc, curTime);
     
-    // Texture binding - we set GL_ACTIVE_TEXTURE0, and then we tell fragment shader,
-    // that gSampler variable will fetch data from GL_ACTIVE_TEXTURE0
-    
-//    tGold.bindTexture(0);
-//    
-//    // Rendering of cube
-//    
-//    mCurrent = glm::translate(mModelView, glm::vec3(-8.0f, 0.0f, 0.0f));
-//    mCurrent = glm::scale(mCurrent, glm::vec3(10.0f, 10.0f, 10.0f));
-//    mCurrent = glm::rotate(mCurrent, fRotationAngleCube, glm::vec3(1.0f, 0.0f, 0.0f));
-//    glUniformMatrix4fv(iModelViewLoc, 1, GL_FALSE, glm::value_ptr(mCurrent));
-//    
-//    glDrawArrays(GL_TRIANGLES, 0, 36);
-//    
-//    // Rendering of pyramid
-//    
-//    mCurrent = glm::translate(mModelView, glm::vec3(8.0f, 0.0f, 0.0f));
-//    mCurrent = glm::scale(mCurrent, glm::vec3(10.0f, 10.0f, 10.0f));
-//    mCurrent = glm::rotate(mCurrent, fRotationAnglePyramid, glm::vec3(0.0f, 1.0f, 0.0f));
-//    glUniformMatrix4fv(iModelViewLoc, 1, GL_FALSE, glm::value_ptr(mCurrent));
-//    
-//    glDrawArrays(GL_TRIANGLES, 36, 12);
-
     // Render ground
     glBindVertexArray(uiVAO);
     int iSamplerLoc = shader.getUniformLocation("gSampler");
     glUniform1i(iSamplerLoc, 0);
     tGround.bindTexture();
     glUniformMatrix4fv(iModelViewLoc, 1, GL_FALSE, glm::value_ptr(mModelView));
-    glDrawArrays(GL_TRIANGLES, 48, 6);
-    tree.genMainBranch(mModelView);
-    tree.render(iModelViewLoc, curTime);
+    glDrawArrays(GL_TRIANGLES, 0, 6);
+
     tree.drawLeaf(iModelViewLoc, isAlpha);
     tree.speedCoef = speedBranch;
 
-    
-//    fRotationAngleCube += fCubeRotationSpeed;
-//    fRotationAnglePyramid += fPyramidRotationSpeed;
-
-//    glm::rotate(mModelView, (float) (rand() % 10), glm::vec3(1.0f, 0.0f, 0.0f))
-
     camera.update();
     
-    std::cout << isAlpha << " ";
     glfwSwapBuffers(_mainWindow);
     glfwPollEvents();
 }

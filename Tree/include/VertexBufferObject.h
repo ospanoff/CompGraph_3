@@ -7,15 +7,6 @@ using namespace std;
 
 typedef unsigned char BYTE;
 
-/********************************
-
-Class:	CVertexBufferObject
-
-Purpose:	Wraps OpenGL vertex buffer
-			object.
-
-********************************/
-
 class CVertexBufferObject
 {
 public:

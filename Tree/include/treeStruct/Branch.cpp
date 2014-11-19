@@ -44,25 +44,10 @@ void Branch::load()
         branchVertices[3 * i + 2] = glm::vec3(x, y, 0);
         branchVertices[3 * numberOfDots + 3 * i + 2] = glm::vec3(-x, -y, 0);
     }
-//    
-//    std::cout << "BEGIN\n";
-//    for (int i = 0; i < 6 * numberOfDots; i++) {
-//        std::cout << "(" << branchVertices[i].x << "," << branchVertices[i].y << "," << branchVertices[i].x << ") ";
-//        if (i % 3 == 2)
-//            std::cout << std::endl;
-//    }
-//    std::cout << "END\n";
 
     glm::vec2 branchTexCoords[3] = {
         glm::vec2(0.5f, 1.0f), glm::vec2(0.0f, 0.0f), glm::vec2(1.0f, 0.0f)
     };
-//    glm::vec2 *branchTexCoords = new glm::vec2 [6*numberOfDots];
-//    
-//    for (int i = 0; i < 2 * numberOfDots; i++) {
-//        branchTexCoords[3*i] = glm::vec2(0.5f, 1.0f);
-//        branchTexCoords[3*i + 1] = glm::vec2(i / (2 * numberOfDots), 0.0f);
-//        branchTexCoords[3*i + 2] = glm::vec2((i + 1) / (2 * numberOfDots), 0.0f);
-//    }
     
     
     glm::vec3 branchNormals[6] =

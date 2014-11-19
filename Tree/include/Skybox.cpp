@@ -1,15 +1,5 @@
 #include "Skybox.h"
 
-/*-----------------------------------------------
-
-Name:	loadSkybox
-
-Params:	paths of skybox pictures
-
-Result:	Loads skybox and creates VAO and VBO for it.
-
----------------------------------------------*/
-
 void CSkybox::loadSkybox(string a_sDirectory, string a_sFront, string a_sBack, string a_sLeft, string a_sRight, string a_sTop, string a_sBottom)
 {
 	tTextures[0].loadTexture2D(a_sDirectory+a_sFront);
@@ -89,16 +79,6 @@ void CSkybox::loadSkybox(string a_sDirectory, string a_sFront, string a_sBack, s
 	glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 2*sizeof(glm::vec3)+sizeof(glm::vec2), (void*)(sizeof(glm::vec3)+sizeof(glm::vec2)));
 }
 
-/*-----------------------------------------------
-
-Name:	renderSkybox
-
-Params:	none
-
-Result: Guess what it does :)
-
----------------------------------------------*/
-
 void CSkybox::renderSkybox()
 {
 	glDepthMask(0);
@@ -109,16 +89,6 @@ void CSkybox::renderSkybox()
 	}
 	glDepthMask(1);
 }
-
-/*-----------------------------------------------
-
-Name:	loadSkybox
-
-Params:	paths of skybox pictures
-
-Result:	Loads skybox and creates VAO and VBO for it.
-
----------------------------------------------*/
 
 void CSkybox::releaseSkybox()
 {

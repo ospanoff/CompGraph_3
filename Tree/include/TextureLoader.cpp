@@ -9,17 +9,6 @@ CTexture::CTexture()
 	bMipMapsGenerated = false;
 }
 
-/*-----------------------------------------------
-
-Name:		loadTexture2D
-
-Params:	a_sPath - path to the texture
-
-Result:	Loads texture from a file, supports most
-			graphics formats.
-
----------------------------------------------*/
-
 bool CTexture::loadTexture2D(string a_sPath, bool bGenerateMipMaps)
 {
 	FREE_IMAGE_FORMAT fif = FIF_UNKNOWN;
@@ -82,20 +71,6 @@ void CTexture::setSamplerParameter(GLenum parameter, GLenum value)
     glSamplerParameteri(uiSampler, parameter, value);
 }
 
-/*-----------------------------------------------
-
-Name:		setFiltering
-
-Params:	tfMagnification - mag. filter, must be from
-									ETextureFiltering enum
-			tfMinification - min. filter, must be from
-									ETextureFiltering enum
-
-Result:	Sets magnification and minification
-			texture filter.
-
----------------------------------------------*/
-
 void CTexture::setFiltering(int a_tfMagnification, int a_tfMinification)
 {
 	// Set magnification filter
@@ -120,32 +95,12 @@ void CTexture::setFiltering(int a_tfMagnification, int a_tfMinification)
 	tfMagnification = a_tfMagnification;
 }
 
-/*-----------------------------------------------
-
-Name:		bindTexture
-
-Params:	iTextureUnit - texture unit to bind texture to
-
-Result:	Guess what it does :)
-
----------------------------------------------*/
-
 void CTexture::bindTexture(int iTextureUnit)
 {
 	glActiveTexture(GL_TEXTURE0+iTextureUnit);
 	glBindTexture(GL_TEXTURE_2D, uiTexture);
 	glBindSampler(iTextureUnit, uiSampler);
 }
-
-/*-----------------------------------------------
-
-Name:		releaseTexture
-
-Params:	none
-
-Result:	Frees all memory used by texture.
-
----------------------------------------------*/
 
 void CTexture::releaseTexture()
 {

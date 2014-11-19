@@ -27,17 +27,6 @@ void CFlyingCamera::setUp(glm::vec3 a_vEye, glm::vec3 a_vView, glm::vec3 a_vUp, 
     fSensitivity = a_fSensitivity;
 }
 
-/*-----------------------------------------------
- 
- Name:	rotateWithMouse
- 
- Params:	none
- 
- Result:	Checks for moving of mouse and rotates
- camera.
- 
- ---------------------------------------------*/
-
 void CFlyingCamera::rotateWithMouse(double x, double y)
 {
     int width, height;
@@ -47,8 +36,6 @@ void CFlyingCamera::rotateWithMouse(double x, double y)
 
     float deltaX = (float)(iCentX-x)*fSensitivity;
     float deltaY = (float)(iCentY-y)*fSensitivity;
-//    if (deltaX || deltaY)
-//        std::cout << deltaX << " " << deltaY << std::endl;
     
     if(deltaX != 0.0f)
     {
@@ -72,17 +59,6 @@ void CFlyingCamera::rotateWithMouse(double x, double y)
     glfwSetCursorPos(window, iCentX, iCentY);
 }
 
-/*-----------------------------------------------
- 
- Name:	getAngleY
- 
- Params:	none
- 
- Result:	Gets Y angle of camera (head turning left
- and right).
- 
- ---------------------------------------------*/
-
 float CFlyingCamera::getAngleY()
 {
     glm::vec3 vDir = vView-vEye; vDir.y = 0.0f;
@@ -91,17 +67,6 @@ float CFlyingCamera::getAngleY()
     if(vDir.x < 0)fAngle = 360.0f-fAngle;
     return fAngle;
 }
-
-/*-----------------------------------------------
- 
- Name:	getAngleX
- 
- Params:	none
- 
- Result:	Gets X angle of camera (head turning up
- and down).
- 
- ---------------------------------------------*/
 
 float CFlyingCamera::getAngleX()
 {
@@ -114,22 +79,8 @@ float CFlyingCamera::getAngleX()
     return fAngle;
 }
 
-/*-----------------------------------------------
- 
- Name:	update
- 
- Params:	none
- 
- Result:	Performs updates of camera - moving and
- rotating.
- 
- ---------------------------------------------*/
-
 void CFlyingCamera::update()
 {
-//    rotateWithMouse(x, y);
-    
-    // Get view direction
     glm::vec3 vMove = vView-vEye;
     vMove = glm::normalize(vMove);
     vMove *= fSpeed;
@@ -138,16 +89,7 @@ void CFlyingCamera::update()
     vStrafe = glm::normalize(vStrafe);
     vStrafe *= fSpeed;
     
-//    int iMove = 0;
     glm::vec3 vMoveBy;
-    // Get vector of move
-    
-//    
-//    if (glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS) {
-//        fSunAngle -= M_PI / 4;
-//    } else if (glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS) {
-//        fSunAngle += M_PI / 4;
-//    }
     
     if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) {
         vMoveBy += vMove * 1.0f;
@@ -163,17 +105,6 @@ void CFlyingCamera::update()
     vEye += vMoveBy; vView += vMoveBy;
 }
 
-/*-----------------------------------------------
- 
- Name:	resetMouse
- 
- Params:	none
- 
- Result:	Sets mouse cursor back to the center of
- window.
- 
- ---------------------------------------------*/
-
 void CFlyingCamera::resetMouse()
 {
     int width, height;
@@ -184,17 +115,6 @@ void CFlyingCamera::resetMouse()
     iCentY = (height)>>1;
     glfwSetCursorPos(window, iCentX, iCentY);
 }
-
-/*-----------------------------------------------
- 
- Name:	look
- 
- Params:	none
- 
- Result:	Returns proper modelview matrix to make
- camera look.
- 
- ---------------------------------------------*/
 
 glm::mat4 CFlyingCamera::look()
 {

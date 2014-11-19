@@ -46,16 +46,15 @@ void Leaf::load()
         leafTexCoords[i] = glm::vec2(leafVertices[i].x / 2.5f + 0.5f, leafVertices[i].y / 2.5f + 0.5f);
     }
     
-    glm::vec3 vSkyBoxNormals[16 * 3] =
+    glm::vec3 leafNormals[16 * 3] =
     {
-        glm::vec3(0.0f, 0.0f, -1.0f),
-        //        glm::vec3(0.0f, 0.0f, 1.0f)
+        glm::vec3(0.0f, 0.0f, 1.0f)
     };
     
     for (int i = 0; i < 16 * 3; i++) {
         vboRenderData.addData(&leafVertices[i], sizeof(glm::vec3));
         vboRenderData.addData(&leafTexCoords[i], sizeof(glm::vec2));
-        vboRenderData.addData(&vSkyBoxNormals[i%1], sizeof(glm::vec3));
+        vboRenderData.addData(&leafNormals[i%1], sizeof(glm::vec3));
     }
     
     vboRenderData.uploadDataToGPU(GL_STATIC_DRAW);
@@ -105,7 +104,7 @@ void Leaf::loadAlpha()
         glm::vec2(1.0f, 0.0f), glm::vec2(0.0f, 0.0f), glm::vec2(0.0f, 1.0f)
     };
     
-    glm::vec3 vSkyBoxNormals[6] =
+    glm::vec3 leafNormals[6] =
     {
         glm::vec3(0.0f, 0.0f, -1.0f),
 //        glm::vec3(0.0f, 0.0f, 1.0f)
@@ -114,7 +113,7 @@ void Leaf::loadAlpha()
     for (int i = 0; i < 6; i++) {
         vboRenderDataAlpha.addData(&leafVertices[i], sizeof(glm::vec3));
         vboRenderDataAlpha.addData(&leafTexCoords[i], sizeof(glm::vec2));
-        vboRenderDataAlpha.addData(&vSkyBoxNormals[i%1], sizeof(glm::vec3));
+        vboRenderDataAlpha.addData(&leafNormals[i%1], sizeof(glm::vec3));
     }
     
     vboRenderDataAlpha.uploadDataToGPU(GL_STATIC_DRAW);

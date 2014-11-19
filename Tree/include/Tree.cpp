@@ -29,10 +29,9 @@ Tree::Tree(int maxBranch, int brNum, int lNum, int height)
     treeInfo[0].speed = 2.0f;
     treeInfo[0].leaves.resize(leafNum);
     for (int i = 0; i < leafNum; i++) {
-        treeInfo[curNum].leaves[i].push_back(0.4 + (float) (i * 0.6) / (float) (leafNum));//(0.5 + (float) (rand() % 4) / (float) 10);
+        treeInfo[curNum].leaves[i].push_back(0.4 + (float) (i * 0.6) / (float) (leafNum));
         treeInfo[curNum].leaves[i].push_back(rand() % 90);
         treeInfo[curNum].leaves[i].push_back(rand() % 360);
-        //        std::cout << treeInfo[curNum].leaves[i][1] << std::endl;
     }
 }
 
@@ -52,7 +51,6 @@ void Tree::genMainBranch(glm::mat4 mModelView)
 void Tree::genBranch()
 {
     srand((int)time(NULL));
-//    std::cout << rand() << " ";
     curNum++;
     int num = 0;
     do {
@@ -107,10 +105,8 @@ void Tree::genBranch()
         treeInfo[curNum].leaves[i].push_back(0.25 + (float) (i * 0.75) / (float) (leafNum));
         treeInfo[curNum].leaves[i].push_back(rand() % 90);
         treeInfo[curNum].leaves[i].push_back(rand() % 360);
-//        std::cout << treeInfo[curNum].leaves[i][1] << std::endl;
     }
     
-//    std::cout << curNum << " " << num << "; " << t << " " << treeInfo[curNum].maxLen << " " << treeInfo[curNum].parent->maxLen << std::endl;
 }
 
 void Tree::drawBranch(branchInfo &binfo, GLint iModelViewLoc)
@@ -143,7 +139,7 @@ void Tree::drawBranch(branchInfo &binfo, GLint iModelViewLoc)
 void Tree::drawLeaf(GLint iModelViewLoc, bool alpha)
 {
     if (alpha){
-        for (int i = 0; i <= curNum; i++) {
+        for (int i = 1; i <= curNum; i++) {
             float t = treeInfo[i].len / 10;
             for (int j = 0; j < leafNum; j++) {
     
@@ -154,7 +150,6 @@ void Tree::drawLeaf(GLint iModelViewLoc, bool alpha)
                 mCurrent = glm::rotate(mCurrent, treeInfo[i].angTheta + treeInfo[i].leaves[j][1], glm::vec3(1.0f, 0.0f, 0.0f));
             
                 mCurrent = glm::translate(mCurrent, glm::vec3(0, 0, (t-1)/2));
-    //            t = (1 - treeInfo[i].leaves[j]) * 100;
                 mCurrent = glm::scale(mCurrent, glm::vec3(1 - t, 1 - t, 1 - t));
             
                 glUniformMatrix4fv(iModelViewLoc, 1, GL_FALSE, glm::value_ptr(mCurrent));
@@ -162,19 +157,16 @@ void Tree::drawLeaf(GLint iModelViewLoc, bool alpha)
             }
         }
     } else {
-        for (int i = 0; i <= curNum; i++) {
+        for (int i = 1; i <= curNum; i++) {
             
             float t = treeInfo[i].len / 45;
             
             for (int j = 0; j < leafNum; j++) {
 
                 mCurrent = glm::translate(treeInfo[i].MVMatrix, glm::vec3(0, treeInfo[i].leaves[j][0] * treeInfo[i].len, 0));
-    //            std::cout << treeInfo[i].leaves[j][0] << std::endl;
                 mCurrent = glm::rotate(mCurrent, treeInfo[i].angPhi + treeInfo[i].leaves[j][2], glm::vec3(0.0f, 1.0f, 0.0f));
 
                 mCurrent = glm::rotate(mCurrent, treeInfo[i].angTheta + treeInfo[i].leaves[j][1], glm::vec3(1.0f, 0.0f, 0.0f));
-    //            mCurrent = glm::translate(mCurrent, glm::vec3(0, , 0));
-    //            t = 1.1 * t;
                 mCurrent = glm::scale(mCurrent, glm::vec3(1 - t, (1 - t)/2, 0));
                 mCurrent = glm::translate(mCurrent, glm::vec3(2 * (1 - treeInfo[i].leaves[j][0] / 2), 0, 0));
 
@@ -191,7 +183,6 @@ void Tree::render(GLint iModelViewLoc, double time)
         lastTime = time;
         if (curNum < branchNum)
             genBranch();
-//        std::cout << curNum << " ";
     }
     for (int i = 0; i <= curNum; i++) {
         drawBranch(treeInfo[i], iModelViewLoc);

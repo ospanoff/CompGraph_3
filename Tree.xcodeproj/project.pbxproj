@@ -10,7 +10,6 @@
 		D522970A1A1AECC3002C746A /* Leaf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D52297081A1AECC3002C746A /* Leaf.cpp */; };
 		D522970C1A1BA0F8002C746A /* leafNA.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = D522970B1A1BA0F3002C746A /* leafNA.jpg */; };
 		D533362C1A1AE2C70040FC3D /* leaf.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = D533362B1A1AE2C20040FC3D /* leaf.png */; };
-		D533362E1A1AE4A60040FC3D /* leaf.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = D533362D1A1AE4A30040FC3D /* leaf.jpg */; };
 		D5A6AF7A1A18E70700A4618B /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D5A6AF791A18E70700A4618B /* main.cpp */; };
 		D5A6AF811A18E73D00A4618B /* libglfw3.3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D5A6AF801A18E73D00A4618B /* libglfw3.3.0.dylib */; };
 		D5A6AF831A18E79B00A4618B /* libGLEW.1.11.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D5A6AF821A18E79B00A4618B /* libGLEW.1.11.0.dylib */; };
@@ -22,7 +21,6 @@
 		D5A6AF991A18F01E00A4618B /* VertexBufferObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D5A6AF961A18F01E00A4618B /* VertexBufferObject.cpp */; };
 		D5A6AFA21A18F6DD00A4618B /* shader.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = D5A6AF9D1A18F6D800A4618B /* shader.frag */; };
 		D5A6AFA31A18F6DD00A4618B /* shader.vert in CopyFiles */ = {isa = PBXBuildFile; fileRef = D5A6AF9E1A18F6D800A4618B /* shader.vert */; };
-		D5A6AFA41A18F6E100A4618B /* golddiag.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = D5A6AFA01A18F6D800A4618B /* golddiag.jpg */; };
 		D5A6AFA51A18F6E100A4618B /* snow.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = D5A6AFA11A18F6D800A4618B /* snow.jpg */; };
 		D5B1123F1A196A8C0075C184 /* branch.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = D5B1123E1A196A830075C184 /* branch.jpg */; };
 		D5B112411A1975550075C184 /* grass.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = D5B112401A19754C0075C184 /* grass.jpg */; };
@@ -57,11 +55,9 @@
 			dstSubfolderSpec = 7;
 			files = (
 				D522970C1A1BA0F8002C746A /* leafNA.jpg in CopyFiles */,
-				D533362E1A1AE4A60040FC3D /* leaf.jpg in CopyFiles */,
 				D533362C1A1AE2C70040FC3D /* leaf.png in CopyFiles */,
 				D5B112411A1975550075C184 /* grass.jpg in CopyFiles */,
 				D5B1123F1A196A8C0075C184 /* branch.jpg in CopyFiles */,
-				D5A6AFA41A18F6E100A4618B /* golddiag.jpg in CopyFiles */,
 				D5A6AFA51A18F6E100A4618B /* snow.jpg in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -88,7 +84,6 @@
 		D52297091A1AECC3002C746A /* Leaf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Leaf.h; sourceTree = "<group>"; };
 		D522970B1A1BA0F3002C746A /* leafNA.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = leafNA.jpg; sourceTree = "<group>"; };
 		D533362B1A1AE2C20040FC3D /* leaf.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = leaf.png; sourceTree = "<group>"; };
-		D533362D1A1AE4A30040FC3D /* leaf.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = leaf.jpg; sourceTree = "<group>"; };
 		D5A6AF761A18E70700A4618B /* Tree */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Tree; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5A6AF791A18E70700A4618B /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		D5A6AF801A18E73D00A4618B /* libglfw3.3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw3.3.0.dylib; path = ../../../../../../usr/local/Cellar/glfw3/3.0.4/lib/libglfw3.3.0.dylib; sourceTree = "<group>"; };
@@ -105,7 +100,6 @@
 		D5A6AF971A18F01E00A4618B /* VertexBufferObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VertexBufferObject.h; sourceTree = "<group>"; };
 		D5A6AF9D1A18F6D800A4618B /* shader.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader.frag; sourceTree = "<group>"; };
 		D5A6AF9E1A18F6D800A4618B /* shader.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader.vert; sourceTree = "<group>"; };
-		D5A6AFA01A18F6D800A4618B /* golddiag.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = golddiag.jpg; sourceTree = "<group>"; };
 		D5A6AFA11A18F6D800A4618B /* snow.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = snow.jpg; sourceTree = "<group>"; };
 		D5B1123E1A196A830075C184 /* branch.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = branch.jpg; sourceTree = "<group>"; };
 		D5B112401A19754C0075C184 /* grass.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = grass.jpg; sourceTree = "<group>"; };
@@ -217,11 +211,9 @@
 			isa = PBXGroup;
 			children = (
 				D522970B1A1BA0F3002C746A /* leafNA.jpg */,
-				D533362D1A1AE4A30040FC3D /* leaf.jpg */,
 				D533362B1A1AE2C20040FC3D /* leaf.png */,
 				D5B112401A19754C0075C184 /* grass.jpg */,
 				D5B1123E1A196A830075C184 /* branch.jpg */,
-				D5A6AFA01A18F6D800A4618B /* golddiag.jpg */,
 				D5A6AFA11A18F6D800A4618B /* snow.jpg */,
 			);
 			path = textures;

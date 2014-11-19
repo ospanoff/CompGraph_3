@@ -4,14 +4,6 @@
 #include "VertexBufferObject.h"
 #include <glm/glm.hpp>
 
-/********************************
-
-Class:	CSkybox
-
-Purpose: Class for using skybox.
-
-********************************/
-
 class CSkybox
 {
 public:
